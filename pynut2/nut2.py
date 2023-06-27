@@ -556,10 +556,12 @@ class PyNUTClient(object):
 
         self._write("HELP\n")
 
+        result = self._read_until("\n")
+      
         if not self._persistent:
             self._disconnect()
 
-        return self._read_until("\n")
+        return result
 
     def ver(self):
         """Send VER command."""
@@ -570,7 +572,9 @@ class PyNUTClient(object):
 
         self._write("VER\n")
 
+        result = self._read_until("\n")
+      
         if not self._persistent:
             self._disconnect()
 
-        return self._read_until("\n")
+        return result
